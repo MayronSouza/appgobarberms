@@ -17,7 +17,7 @@ import {
   Container,
   Title,
   ForgotPassword,
-  ForgotPassowordText,
+  ForgotPasswordText,
   CreateAccountButton,
   CreateAccountButtonText,
 } from './styles';
@@ -49,7 +49,7 @@ const SignIn: React.FC = () => {
             </Button>
 
             <ForgotPassword onPress={() => console.log('Esqueci minha senha')}>
-              <ForgotPassowordText>Esqueci minha senha</ForgotPassowordText>
+              <ForgotPasswordText>Esqueci minha senha</ForgotPasswordText>
             </ForgotPassword>
           </Container>
         </ScrollView>
