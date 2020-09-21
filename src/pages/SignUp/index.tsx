@@ -18,6 +18,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 
 import getValidationErrors from '../../utils/getValidationErrors';
+import api from '../../services/api';
 
 import logoImg from '../../assets/logo.png';
 
@@ -51,13 +52,11 @@ const SignUp: React.FC = () => {
         abortEarly: false,
       });
 
-      // api.post('users', data);
-
-      // history.push('/');
+      await api.post('users', data);
 
       Alert.alert(
-        'Cadastro realizado!',
-        'Você já pode fazer seu logon no GoBarber!',
+        'Cadastro realizado com sucesso!',
+        'Você já pode fazer login na aplicação.',
       );
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
