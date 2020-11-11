@@ -36,40 +36,45 @@ const SignUp: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null);
   const navigation = useNavigation();
 
-  const handleSignUp = useCallback(async (data: SignUpFormData) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSignUp = useCallback(
+    async (data: SignUpFormData) => {
+      try {
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        name: Yup.string().required('Nome obrigatório'),
-        email: Yup.string()
-          .required('E-mail obrigatório')
-          .email('Digite um e-mail válido'),
-        password: Yup.string().min(6, 'No mínimo 6 dígitos'),
-      });
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Nome obrigatório'),
+          email: Yup.string()
+            .required('E-mail obrigatório')
+            .email('Digite um e-mail válido'),
+          password: Yup.string().min(6, 'No mínimo 6 dígitos'),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-      await api.post('users', data);
+        await api.post('users', data);
 
-      Alert.alert(
-        'Cadastro realizado com sucesso!',
-        'Você já pode fazer login na aplicação.',
-      );
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
+        Alert.alert(
+          'Cadastro realizado com sucesso!',
+          'Você já pode fazer login na aplicação.',
+        );
 
-        formRef.current?.setErrors(errors);
+        navigation.goBack();
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
 
-        return;
+          formRef.current?.setErrors(errors);
+
+          return;
+        }
+
+        Alert.alert('Erro no Cadastro', 'Ocorreu um erro ao fazer cadastro');
       }
-
-      Alert.alert('Erro no Cadastro', 'Ocorreu um erro ao fazer cadastro');
-    }
-  }, []);
+    },
+    [navigation],
+  );
 
   return (
     <>
