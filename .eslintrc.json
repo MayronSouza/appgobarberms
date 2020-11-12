@@ -36,6 +36,8 @@
       "import/prefer-default-export": "off",
       "react/jsx-props-no-spreading": "off",
       "react/prop-types": "off",
+      "camelcase": "off",
+      "react/jsx-one-expression-per-line": "off",
       "no-unused-expressions": "off",
       "import/extensions": [
         "error",

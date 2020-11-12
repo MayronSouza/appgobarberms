@@ -1,8 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 const Profile: React.FC = () => {
-  return <View />;
+  return (
+    <View>
+      <Text>Dashboard</Text>
+    </View>
+  );
 };
 
 export default Profile;
