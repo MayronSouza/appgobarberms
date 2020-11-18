@@ -70,7 +70,7 @@ const Dashboard: React.FC = () => {
         data={providers}
         keyExtractor={provider => provider.id}
         ListHeaderComponent={
-          <ProviderListTitle>Cabeleireiros</ProviderListTitle>
+          <ProviderListTitle>Cabeleireiros&Barbeiros</ProviderListTitle>
         }
         renderItem={({ item: provider }) => (
           <ProviderContainer
