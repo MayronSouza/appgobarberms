@@ -43,7 +43,7 @@ const SignIn: React.FC = () => {
 
   const { signIn, signOut, user } = useAuth();
 
-  console.log(user);
+  console.log('Usuário atual', user);
 
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
