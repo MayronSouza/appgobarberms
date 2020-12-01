@@ -120,6 +120,8 @@ const CreateAppointment: React.FC = () => {
         date,
       });
 
+      // date.setHours(selectedHour - 1);
+
       navigate('AppointmentCreated', { date: date.getTime() });
     } catch (err) {
       Alert.alert(
